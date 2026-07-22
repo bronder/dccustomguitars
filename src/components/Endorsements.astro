@@ -1,5 +1,7 @@
 ---
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+import { Picture } from 'astro:assets';
+import artistsBannerImg from '~/assets/images/dc_artists_banner.jpg';
+
 const artists = [
   { name: 'Joe Stump', url: 'http://www.joestump.com/' },
   { name: 'Tony Rombola', url: 'https://www.godsmack.com/' },
@@ -32,11 +34,12 @@ const artists = [
     </div>
 
     <figure class="showcase showcase--artists">
-      <img
-        src={`${base}/images/dc_artists_banner.jpg`}
+      <Picture
+        src={artistsBannerImg}
         alt="DC Custom Guitars endorsed artists banner"
         loading="lazy"
-        decoding="async"
+        widths={[480, 768, 1024, 1280, 1600]}
+        sizes="(min-width: 1280px) 1280px, 100vw"
       />
     </figure>
 

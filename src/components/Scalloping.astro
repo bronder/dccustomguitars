@@ -1,5 +1,11 @@
 ---
 // Scalloping service — interactive tier selector
+import { Picture } from 'astro:assets';
+import fretboardImg from '~/assets/images/scalloped_fretboard_dc_guitars.jpg';
+import scallopsDiffImg from '~/assets/images/scallops_differences_fretboard.jpg';
+import maxxReviewImg from '~/assets/images/guitar_maxx_carlisle_reviews.jpg';
+import billVisserImg from '~/assets/images/bill_visser_shred_guitar.jpg';
+
 const categories = [
   {
     id: 'neck-thru',
@@ -48,7 +54,6 @@ const paypalIds = {
 
 // Gift-card button (separate product, $10–$3,000). Used in the FAQ callout.
 const giftCardPaypalId = 'LNGDR2PPZWL7G';
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <section class="section scallop" id="scalloping">
@@ -83,11 +88,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           and ebony families, or left bare if you prefer.
         </p>
         <figure class="scallop__showcase">
-          <img
-            src={`${base}/images/scalloped_fretboard_dc_guitars.jpg`}
+          <Picture
+            src={fretboardImg}
             alt="Close-up of a hand-scalloped fretboard by DC Custom Guitars"
             loading="lazy"
-            decoding="async"
+            widths={[320, 480, 640, 800]}
+            sizes="(max-width: 880px) 100vw, 45vw"
           />
           <figcaption>A finished hand-scalloped fretboard, following the neck radius.</figcaption>
         </figure>
@@ -270,11 +276,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             entire register.
           </p>
           <figure class="faq__figure">
-            <img
-              src={`${base}/images/scallops_differences_fretboard.jpg`}
+            <Picture
+              src={scallopsDiffImg}
               alt="Diagram showing the difference between Blackmore progressive and YJM full-pipe scallops"
               loading="lazy"
-              decoding="async"
+              widths={[320, 480, 640, 800]}
+              sizes="(max-width: 880px) 100vw, 50vw"
             />
             <figcaption>Blackmore progressive vs. YJM full-pipe — side profile.</figcaption>
           </figure>
@@ -399,11 +406,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             rel="noopener"
             aria-label="Watch Maxx Carlisle's Guitar MAX review on YouTube"
           >
-            <img
-              src={`${base}/images/guitar_maxx_carlisle_reviews.jpg`}
+            <Picture
+              src={maxxReviewImg}
               alt="Maxx Carlisle of Guitar MAX reviews the DC Custom Guitars scalloping service"
               loading="lazy"
-              decoding="async"
+              widths={[240, 320, 400, 480]}
+              sizes="(max-width: 880px) 100vw, 280px"
             />
           </a>
           <p class="faq__card-body">
@@ -422,11 +430,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       </div>
 
       <figure class="showcase showcase--scallop">
-        <img
-          src={`${base}/images/bill_visser_shred_guitar.jpg`}
+        <Picture
+          src={billVisserImg}
           alt="Bill Visser's scalloped shred guitar by DC Custom Guitars"
           loading="lazy"
-          decoding="async"
+          widths={[480, 768, 1024, 1280]}
+          sizes="(min-width: 1280px) 1280px, 100vw"
         />
         <figcaption>Bill Visser's scalloped shred guitar — a full-pipe hand scallop.</figcaption>
       </figure>

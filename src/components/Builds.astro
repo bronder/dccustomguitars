@@ -1,11 +1,31 @@
 ---
 // Custom Builds showcase
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const builds = [
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro:assets';
+import evolinImg from '~/assets/images/evolin_dc_custom_guitars_usa.jpg';
+import superShredImg from '~/assets/images/super_strat_jack_butler_style.jpg';
+import reverseHendrixImg from '~/assets/images/dc_custom_reverse_hendrix.jpg';
+import moddedVImg from '~/assets/images/sequon_yoon_modded_gibson_v_single_pickups.jpg';
+import moddedEspImg from '~/assets/images/joe_stump_modded_esp_ltd_scallops.jpg';
+import lineupImg from '~/assets/images/dc_custom_models_1600.jpg';
+import explodedImg from '~/assets/images/evolin_exploded_view.jpg';
+
+interface Build {
+  name: string;
+  badge: string;
+  image: ImageMetadata;
+  alt: string;
+  description: string;
+  specs: Array<[string, string]>;
+  price: string;
+  priceNote: string;
+}
+
+const builds: Build[] = [
   {
     name: 'DC Custom Evolin',
     badge: 'Bestseller',
-    image: `${base}/images/evolin_dc_custom_guitars_usa.jpg`,
+    image: evolinImg,
     alt: 'DC Custom Evolin signature model electric guitar',
     description:
       "Dean's signature instrument. A modern superstrat with a sculpted body, premium tonewoods, and uncompromising build quality. Built to your spec from the ground up.",
@@ -21,7 +41,7 @@ const builds = [
   {
     name: 'Super Shred (SS)',
     badge: 'Pro Choice',
-    image: `${base}/images/super_strat_jack_butler_style.jpg`,
+    image: superShredImg,
     alt: 'DC Custom Super Shred (SS) signature model',
     description:
       'Built for the player who lives in the upper register. Available in rear-route (RR) or top-route (TR) configurations with the hottest pickups and the most aggressive specs.',
@@ -37,7 +57,7 @@ const builds = [
   {
     name: 'Reverse Hendrix',
     badge: 'Custom Build',
-    image: `${base}/images/dc_custom_reverse_hendrix.jpg`,
+    image: reverseHendrixImg,
     alt: 'DC Custom Reverse Hendrix — left-handed or right-handed reverse headstock',
     description:
       "Inspired by the legend, reimagined for the modern player. Reverse headstock, vintage-style contours, and that unmistakable silhouette. Every detail built to your taste.",
@@ -53,7 +73,7 @@ const builds = [
   {
     name: 'Modded Flying V',
     badge: 'Recent Build',
-    image: `${base}/images/sequon_yoon_modded_gibson_v_single_pickups.jpg`,
+    image: moddedVImg,
     alt: 'DC Custom modded Gibson Flying V with SSS pickup configuration',
     description:
       "Bought a guitar that doesn't have the right tone, function, or feel? We'll rework contours, install new pickups, custom wire, add a tremolo, or block the bridge.",
@@ -69,7 +89,7 @@ const builds = [
   {
     name: 'Modded ESP / LTD',
     badge: 'Client Build',
-    image: `${base}/images/joe_stump_modded_esp_ltd_scallops.jpg`,
+    image: moddedEspImg,
     alt: "DC Custom modded ESP LTD with Joe Stump scallops",
     description:
       "One of Joe Stump's personal builds. The same scallop job, pickup swap, and setup that pro players trust for their working instruments.",
@@ -101,7 +121,13 @@ const builds = [
         <article class="build-card">
           <div class="build-card__media">
             <span class="build-card__badge">{build.badge}</span>
-            <img src={build.image} alt={build.alt} loading="lazy" decoding="async" />
+            <Picture
+              src={build.image}
+              alt={build.alt}
+              loading="lazy"
+              widths={[300, 400, 500, 640]}
+              sizes="(max-width: 380px) 100vw, (max-width: 880px) 50vw, 360px"
+            />
           </div>
           <div class="build-card__body">
             <h3 class="build-card__title">{build.name}</h3>
@@ -124,21 +150,23 @@ const builds = [
     </div>
 
     <figure class="showcase">
-      <img
-        src={`${base}/images/dc_custom_models_1600.jpg`}
+      <Picture
+        src={lineupImg}
         alt="Lineup of DC Custom Guitars signature models — Evolin and Super Shred"
         loading="lazy"
-        decoding="async"
+        widths={[480, 768, 1024, 1280, 1600]}
+        sizes="(min-width: 1280px) 1280px, 100vw"
       />
       <figcaption>The DC Custom lineup — Evolin and Super Shred side by side.</figcaption>
     </figure>
 
     <figure class="showcase">
-      <img
-        src={`${base}/images/evolin_exploded_view.jpg`}
+      <Picture
+        src={explodedImg}
         alt="Exploded view of the DC Custom Evolin showing body, neck, hardware, and electronics"
         loading="lazy"
-        decoding="async"
+        widths={[480, 768, 1024, 1280, 1600]}
+        sizes="(min-width: 1280px) 1280px, 100vw"
       />
       <figcaption>
         Evolin exploded view — every component hand-selected and assembled in-house.

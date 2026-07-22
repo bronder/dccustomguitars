@@ -9,6 +9,12 @@ export default defineConfig({
   site,
   base,
   compressHTML: true,
+  image: {
+    // Auto-generate responsive srcset + dimensions for all <Image>/<Picture>.
+    // 'constrained' = max-width:100%, scales down on smaller viewports.
+    layout: 'constrained',
+    responsiveStyles: true,
+  },
   build: {
     inlineStylesheets: 'auto',
   },

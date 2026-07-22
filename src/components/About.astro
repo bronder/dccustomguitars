@@ -1,6 +1,8 @@
 ---
 // About — Dean Cascione, master luthier
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+import { Picture } from 'astro:assets';
+import deanImg from '~/assets/images/dean_cascione_custom_guitars.jpg';
+import nammImg from '~/assets/images/dean_cascione_seymour_duncan_floyd_rose.jpg';
 ---
 
 <section class="section" id="about">
@@ -12,11 +14,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
     <div class="about">
       <div class="about__media">
-        <img
-          src={`${base}/images/dean_cascione_custom_guitars.jpg`}
+        <Picture
+          src={deanImg}
           alt="Master Luthier Dean Cascione in his shop"
           loading="lazy"
-          decoding="async"
+          widths={[320, 480, 640, 800]}
+          sizes="(max-width: 880px) 100vw, 50vw"
         />
       </div>
 
@@ -57,11 +60,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         planet.
       </p>
       <figure class="about__figure">
-        <img
-          src={`${base}/images/dean_cascione_seymour_duncan_floyd_rose.jpg`}
+        <Picture
+          src={nammImg}
           alt="Dean Cascione at NAMM with Floyd Rose and Seymour Duncan"
           loading="lazy"
-          decoding="async"
+          widths={[480, 768, 1024, 1280, 1600]}
+          sizes="(min-width: 1280px) 1280px, 100vw"
         />
         <figcaption>
           Dean "DC" Cascione at NAMM with Floyd Rose &amp; Seymour Duncan!

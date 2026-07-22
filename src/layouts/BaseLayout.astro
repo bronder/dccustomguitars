@@ -4,18 +4,17 @@ import '~/styles/global.css';
 interface Props {
   title?: string;
   description?: string;
-  image?: string;
 }
 
 const {
   title = 'DC Custom Guitars USA — Hand-Built Custom Guitars & Scalloping Service',
   description = 'Master Luthier Dean Cascione hand-builds custom electric guitars and offers world-class fretboard scalloping service from his shop in Rochdale, MA. Trusted by Joe Stump, Tony Rombola & more.',
-  image = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/evolin_bandmaster_jacket_copy_1600.jpg`,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
-// OG images need an absolute URL to work on social platforms.
-const ogImage = new URL(image, Astro.site).toString();
+// OG image: must be a stable, non-hashed absolute URL for social scrapers.
+// Served from public/og-hero.jpg (never run through astro:assets).
+const ogImage = new URL('og-hero.jpg', Astro.site).toString();
 ---
 
 <!doctype html>

@@ -1,16 +1,19 @@
 ---
 // Hero — full-bleed, image-backed, big display type
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+import { Picture } from 'astro:assets';
+import heroImg from '~/assets/images/evolin_bandmaster_jacket_copy_1600.jpg';
 ---
 
 <section class="hero" id="top">
   <div class="hero__media">
-    <img
+    <Picture
       class="hero__img"
-      src={`${base}/images/evolin_bandmaster_jacket_copy_1600.jpg`}
+      src={heroImg}
       alt="DC Custom Guitars Evolin model — hand-built by Dean Cascione"
+      layout="full-width"
       loading="eager"
-      decoding="async"
+      widths={[480, 768, 1024, 1280, 1600]}
+      sizes="100vw"
     />
   </div>
 

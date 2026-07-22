@@ -10,3 +10,4 @@ dist
 screenshot-*.png
 .zcode/
 .playwright-mcp/
+*.png
