@@ -840,6 +840,61 @@ a {
 }
 
 /* ============================================================
+   "What you can customize" callout
+   ============================================================ */
+.customize {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  padding: clamp(1.75rem, 4vw, 2.5rem);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.customize__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.customize__lead {
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  max-width: 60ch;
+}
+
+.customize__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  list-style: none;
+  margin-bottom: 1.25rem;
+}
+
+.customize__list li {
+  padding: 0.5rem 1rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.customize__list li:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.customize__note {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+/* ============================================================
    Build process timeline
    ============================================================ */
 .process {
