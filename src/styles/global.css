@@ -396,7 +396,18 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  /* The "DC / MADE IN USA" branding sits on the right side of the source
+     image. Anchor right so it stays visible as the viewport narrows, instead
+     of being cropped equally from both edges. */
+  object-position: right center;
+}
+
+@media (min-width: 1280px) {
+  .hero__img {
+    /* On very wide screens the full image fits comfortably — center it so the
+       composition doesn't feel pushed against the right edge. */
+    object-position: center;
+  }
 }
 
 .hero__inner {
