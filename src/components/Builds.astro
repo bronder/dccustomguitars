@@ -1,0 +1,125 @@
+---
+// Custom Builds showcase
+const builds = [
+  {
+    name: 'DC Custom Evolin',
+    badge: 'Bestseller',
+    image: 'https://dccustomguitars.com/evolin_dc_custom_guitars_usa.jpg',
+    alt: 'DC Custom Evolin signature model electric guitar',
+    description:
+      "Dean's signature instrument. A modern superstrat with a sculpted body, premium tonewoods, and uncompromising build quality. Built to your spec from the ground up.",
+    specs: [
+      ['Body', 'Alder / Mahogany'],
+      ['Neck', 'Bolt-on or Set'],
+      ['Scale', '25.5"'],
+      ['Frets', '22–24'],
+    ],
+    price: '$3,500',
+    priceNote: 'Includes USA shipping',
+  },
+  {
+    name: 'Super Shred (SS)',
+    badge: 'Pro Choice',
+    image: 'https://dccustomguitars.com/super%20strat%20jack%20butler%20style.jpg',
+    alt: 'DC Custom Super Shred (SS) signature model',
+    description:
+      'Built for the player who lives in the upper register. Available in rear-route (RR) or top-route (TR) configurations with the hottest pickups and the most aggressive specs.',
+    specs: [
+      ['Config', 'RR or TR'],
+      ['Bridge', 'Floyd Rose / Kahler'],
+      ['Neck', 'Bolt-on Maple'],
+      ['Pickups', 'Your choice'],
+    ],
+    price: '$3,000',
+    priceNote: 'Includes USA shipping',
+  },
+  {
+    name: 'Reverse Hendrix',
+    badge: 'Custom Build',
+    image: 'https://dccustomguitars.com/dc%20custom%20reverse%20hendrix.jpg',
+    alt: 'DC Custom Reverse Hendrix — left-handed or right-handed reverse headstock',
+    description:
+      "Inspired by the legend, reimagined for the modern player. Reverse headstock, vintage-style contours, and that unmistakable silhouette. Every detail built to your taste.",
+    specs: [
+      ['Style', 'Reverse headstock'],
+      ['Body', 'To your spec'],
+      ['Fretboard', 'Rosewood / Maple'],
+      ['Finish', 'Custom color'],
+    ],
+    price: 'Custom',
+    priceNote: 'Quote on request',
+  },
+  {
+    name: 'Modded Flying V',
+    badge: 'Recent Build',
+    image: 'https://dccustomguitars.com/sequon%20yoon%20modded%20gibson%20v%20single%20pickups.jpg',
+    alt: 'DC Custom modded Gibson Flying V with SSS pickup configuration',
+    description:
+      "Bought a guitar that doesn't have the right tone, function, or feel? We'll rework contours, install new pickups, custom wire, add a tremolo, or block the bridge.",
+    specs: [
+      ['Type', 'Custom mod'],
+      ['Pickups', 'SSS / HH'],
+      ['Bridge', 'Kahler / Hardtail'],
+      ['Pickguard', 'Custom cut'],
+    ],
+    price: 'From $500',
+    priceNote: 'Quote on request',
+  },
+  {
+    name: 'Modded ESP / LTD',
+    badge: 'Client Build',
+    image: 'https://dccustomguitars.com/joe%20stump%20modded%20esp%20ltd%20scallops.jpg',
+    alt: "DC Custom modded ESP LTD with Joe Stump scallops",
+    description:
+      "One of Joe Stump's personal builds. The same scallop job, pickup swap, and setup that pro players trust for their working instruments.",
+    specs: [
+      ['Type', 'Existing guitar'],
+      ['Service', 'Scallop + rewire'],
+      ['Pickups', 'Seymour Duncan'],
+      ['Setup', 'Pro playability'],
+    ],
+    price: 'Custom',
+    priceNote: 'Quote on request',
+  },
+];
+---
+
+<section class="section section--elevated" id="builds">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Custom Builds</span>
+      <h2 class="section-title">Three signatures.<br />Endless configurations.</h2>
+      <p class="section-subtitle">
+        Every DC Custom guitar is built to your spec — body wood, neck profile,
+        fretboard, inlays, pickups, hardware, finish. Your guitar, your way.
+      </p>
+    </div>
+
+    <div class="builds__grid">
+      {builds.map(build => (
+        <article class="build-card">
+          <div class="build-card__media">
+            <span class="build-card__badge">{build.badge}</span>
+            <img src={build.image} alt={build.alt} loading="lazy" decoding="async" />
+          </div>
+          <div class="build-card__body">
+            <h3 class="build-card__title">{build.name}</h3>
+            <p class="build-card__desc">{build.description}</p>
+            <div class="build-card__meta">
+              {build.specs.map(([label, value]) => (
+                <div class="build-card__meta-row">
+                  <span class="build-card__meta-label">{label}</span>
+                  <span class="build-card__meta-value">{value}</span>
+                </div>
+              ))}
+            </div>
+            <div class="build-card__price">
+              <span class="build-card__price-label">{build.priceNote}</span>
+              <span class="build-card__price-value">{build.price}</span>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

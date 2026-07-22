@@ -1,0 +1,65 @@
+---
+const artists = [
+  { name: 'Joe Stump', url: 'http://www.joestump.com/' },
+  { name: 'Tony Rombola', url: 'https://www.godsmack.com/' },
+  { name: 'Ghee Yeh', url: 'https://www.mindoffuryband.com/' },
+  { name: 'Sacra Victoria', url: 'https://linktr.ee/sacravictoria' },
+  { name: 'George Bellas', url: 'https://georgebellas.com/' },
+  { name: 'Jay Menard', url: 'https://www.facebook.com/icewindband/' },
+  { name: 'Frank Tosi', url: 'https://www.lostlegacyny.com/' },
+  { name: 'Lloyd Wallace', url: 'https://lloydwallace.net/' },
+  { name: 'Joe Hart', url: 'http://joehartband.com/' },
+  { name: 'James Norton', url: 'https://www.facebook.com/JamesNortonGuitar/' },
+  { name: 'Rob Moore', url: 'https://www.youtube.com/@shredguitarob' },
+  { name: 'Maxx Carlisle', url: 'http://www.maxxxwell.com/' },
+  { name: 'Steve Del', url: 'https://www.vnvrocks.com/' },
+  { name: 'Bill Visser', url: 'https://www.facebook.com/Psychoprism/' },
+  { name: 'Robb Walton', url: 'https://www.youtube.com/@robbwaltonguitar735' },
+  { name: 'Scott Bronder', url: 'https://www.youtube.com/@ScottBronder' },
+  { name: 'Robbie Sambat', url: 'https://facebook.com/robbie.sambat' },
+  { name: 'James Donahue', url: 'http://www.metaljimrocks.com' },
+  { name: 'Jamie Greenwood', url: 'https://www.youtube.com/@NeoClassicalFan' },
+  { name: 'Tyler Morris', url: 'http://www.tylerdmorris.com/' },
+];
+---
+
+<section class="section section--elevated" id="endorsements">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Endorsed Artists</span>
+      <h2 class="section-title">Played by the best.</h2>
+    </div>
+
+    <blockquote class="testimonial">
+      <p class="testimonial__quote">
+        "DC Custom Guitars are outstanding — first rate all the way. Over the last
+        18 years, Dean Cascione has built some customs for me and scalloped a ton
+        of necks, and the work is just absolutely stellar. Each and every guitar
+        comes back to me looking like it came right out of the factory. From the
+        scallop job to the inlay replacement and neck finishing, it's all top
+        drawer. Just outstanding."
+      </p>
+      <div class="testimonial__author">
+        <div>
+          <div class="testimonial__author-name">Joe Stump</div>
+          <div class="testimonial__author-meta">
+            Berklee College of Music · Alcatrazz · Reign of Terror
+          </div>
+        </div>
+      </div>
+    </blockquote>
+
+    <div class="endorsements">
+      {artists.map(artist => (
+        <a
+          href={artist.url}
+          target="_blank"
+          rel="noopener"
+          class="endorsement"
+        >
+          {artist.name}
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

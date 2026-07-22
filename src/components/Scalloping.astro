@@ -1,0 +1,265 @@
+---
+// Scalloping service — interactive tier selector
+const categories = [
+  {
+    id: 'neck-thru',
+    label: 'Neck-Thru / Set Neck',
+    tiers: [
+      { name: 'YJM Style', meta: 'Full pipe — maximum bite', price: 250 },
+      { name: 'Blackmore Style', meta: 'Progressive — leaves more wood', price: 275 },
+    ],
+  },
+  {
+    id: 'bolt-on',
+    label: 'Bolt-On Neck',
+    tiers: [
+      { name: 'YJM Style', meta: 'Full pipe — maximum bite', price: 190 },
+      { name: 'Blackmore Style', meta: 'Progressive — leaves more wood', price: 220 },
+    ],
+  },
+];
+
+const partialTiers = {
+  'neck-thru': [
+    { name: 'Last 4 Fret (JEM Style)', meta: 'Subtle, classic', price: 90 },
+    { name: '15th Fret Up', meta: 'Upper register focus', price: 110 },
+    { name: '12th Fret Up', meta: 'Standard shred setup', price: 140 },
+    { name: '9th Fret Up', meta: 'Aggressive upper access', price: 160 },
+    { name: '7th Fret Up', meta: 'Full upper register control', price: 180 },
+  ],
+  'bolt-on': [
+    { name: 'Last 4 Fret (JEM Style)', meta: 'Subtle, classic', price: 75 },
+    { name: '15th Fret Up', meta: 'Upper register focus', price: 90 },
+    { name: '12th Fret Up', meta: 'Standard shred setup', price: 110 },
+    { name: '9th Fret Up', meta: 'Aggressive upper access', price: 140 },
+    { name: '7th Fret Up', meta: 'Full upper register control', price: 160 },
+  ],
+};
+---
+
+<section class="section scallop" id="scalloping">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Fretboard Scalloping</span>
+      <h2 class="section-title">Unleash the secrets<br />of total note control.</h2>
+      <p class="section-subtitle">
+        All work performed by hand, in our shop, by Dean himself. Trusted by
+        pro players and OEM companies worldwide since 2004.
+      </p>
+    </div>
+
+    <div class="scallop__layout">
+      <div class="scallop__intro">
+        <h3>Hand-scalloped, the way it should be.</h3>
+        <p>
+          We do <strong>hand scalloping</strong> — following the natural radius
+          of the neck. A radius hand-scalloped neck is more comfortable to play
+          and leaves more wood intact, which means a stronger, straighter neck
+          that stays in tune.
+        </p>
+        <p>
+          Every scallop is finished with the right treatment for the wood:
+          nitrocellulose lacquer and sealer for maple, tongue oil for rosewood
+          and ebony families, or left bare if you prefer.
+        </p>
+        <ul class="scallop__features">
+          <li class="scallop__feature">
+            <span class="scallop__feature-icon">✓</span>
+            <div class="scallop__feature-text">
+              <strong>20+ years experience</strong>
+              <span>All woods, all neck constructions</span>
+            </div>
+          </li>
+          <li class="scallop__feature">
+            <span class="scallop__feature-icon">✓</span>
+            <div class="scallop__feature-text">
+              <strong>Mail-order friendly</strong>
+              <span>Ship your neck — we handle the rest</span>
+            </div>
+          </li>
+          <li class="scallop__feature">
+            <span class="scallop__feature-icon">✓</span>
+            <div class="scallop__feature-text">
+              <strong>Progress photos</strong>
+              <span>Stay in the loop from ship-out to delivery</span>
+            </div>
+          </li>
+          <li class="scallop__feature">
+            <span class="scallop__feature-icon">✓</span>
+            <div class="scallop__feature-text">
+              <strong>2–4 week turnaround</strong>
+              <span>Most jobs ship back within a month</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="scallop__tiers">
+        <div class="scallop__tier-tabs" id="scallopTabs" role="tablist">
+          {categories.map((cat, i) => (
+            <button
+              class:list={['scallop__tier-tab', { 'is-active': i === 0 }]}
+              data-category={cat.id}
+              role="tab"
+              aria-selected={i === 0 ? 'true' : 'false'}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
+        <div data-view="full">
+          <ul class="scallop__tier-list" id="scallopFullList">
+            {categories[0].tiers.map((tier, i) => (
+              <li
+                class:list={['scallop__tier-item', { 'is-selected': i === 0 }]}
+                data-tier-name={tier.name}
+                data-tier-price={tier.price}
+              >
+                <div class="scallop__tier-info">
+                  <span class="scallop__tier-name">{tier.name}</span>
+                  <span class="scallop__tier-meta">{tier.meta}</span>
+                </div>
+                <span class="scallop__tier-price">${tier.price}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div data-view="partial" hidden>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">
+            Partial Scallop · Starting at $75
+          </p>
+          <ul class="scallop__tier-list" id="scallopPartialList">
+            {partialTiers['neck-thru'].map((tier, i) => (
+              <li
+                class:list={['scallop__tier-item', { 'is-selected': i === 0 }]}
+                data-tier-name={tier.name}
+                data-tier-price={tier.price}
+              >
+                <div class="scallop__tier-info">
+                  <span class="scallop__tier-name">{tier.name}</span>
+                  <span class="scallop__tier-meta">{tier.meta}</span>
+                </div>
+                <span class="scallop__tier-price">${tier.price}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="scallop__summary">
+          <div class="scallop__summary-info">
+            <span class="scallop__summary-label">Selected</span>
+            <span class="scallop__summary-value" id="scallopSummary">YJM Style · Neck-Thru</span>
+          </div>
+          <span class="scallop__summary-total" id="scallopTotal">$250</span>
+        </div>
+
+        <a
+          href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RSQYA3W749BNA"
+          target="_blank"
+          rel="noopener"
+          class="btn btn--primary btn--lg"
+          style="width: 100%; justify-content: center;"
+        >
+          Order via PayPal
+        </a>
+
+        <p class="scallop__note">
+          Includes confirmation email + progress photos. Shipping calculated at checkout.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Scalloping tier selector — interactive
+  const tabButtons = document.querySelectorAll<HTMLButtonElement>('#scallopTabs button');
+  const fullList = document.getElementById('scallopFullList') as HTMLUListElement | null;
+  const partialList = document.getElementById('scallopPartialList') as HTMLUListElement | null;
+  const summaryEl = document.getElementById('scallopSummary');
+  const totalEl = document.getElementById('scallopTotal');
+
+  const categories: Record<string, { label: string; tiers: Array<{ name: string; price: number }> }> = {
+    'neck-thru': {
+      label: 'Neck-Thru',
+      tiers: [
+        { name: 'YJM Style', price: 250 },
+        { name: 'Blackmore Style', price: 275 },
+      ],
+    },
+    'bolt-on': {
+      label: 'Bolt-On',
+      tiers: [
+        { name: 'YJM Style', price: 190 },
+        { name: 'Blackmore Style', price: 220 },
+      ],
+    },
+  };
+
+  const partialData: Record<string, Array<{ name: string; price: number }>> = {
+    'neck-thru': [
+      { name: 'Last 4 Fret (JEM Style)', price: 90 },
+      { name: '15th Fret Up', price: 110 },
+      { name: '12th Fret Up', price: 140 },
+      { name: '9th Fret Up', price: 160 },
+      { name: '7th Fret Up', price: 180 },
+    ],
+    'bolt-on': [
+      { name: 'Last 4 Fret (JEM Style)', price: 75 },
+      { name: '15th Fret Up', price: 90 },
+      { name: '12th Fret Up', price: 110 },
+      { name: '9th Fret Up', price: 140 },
+      { name: '7th Fret Up', price: 160 },
+    ],
+  };
+
+  function updateSummary(name: string, price: number, catLabel: string) {
+    if (summaryEl) summaryEl.textContent = `${name} · ${catLabel}`;
+    if (totalEl) totalEl.textContent = `$${price}`;
+  }
+
+  function selectFirst(list: HTMLUListElement) {
+    const first = list.querySelector<HTMLLIElement>('li');
+    list.querySelectorAll('li').forEach(li => li.classList.remove('is-selected'));
+    if (first) {
+      first.classList.add('is-selected');
+      const name = first.dataset.tierName ?? '';
+      const price = Number(first.dataset.tierPrice ?? 0);
+      const catLabel = (document.querySelector('#scallopTabs button.is-active') as HTMLElement | null)?.textContent?.trim() ?? '';
+      updateSummary(name, price, catLabel);
+    }
+  }
+
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabButtons.forEach(b => {
+        b.classList.remove('is-active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-selected', 'true');
+
+      // For prototype: switching tabs simply re-selects the first item of new category
+      const activeList = fullList?.parentElement?.getAttribute('data-view') === 'full' ? fullList : partialList;
+      // Simpler approach: just reselect first item in current visible list
+      const visibleList = document.querySelector<HTMLDivElement>('[data-view]:not([hidden]) ul') as HTMLUListElement | null;
+      if (visibleList) selectFirst(visibleList);
+    });
+  });
+
+  [fullList, partialList].forEach(list => {
+    if (!list) return;
+    list.querySelectorAll<HTMLLIElement>('li').forEach(li => {
+      li.addEventListener('click', () => {
+        list.querySelectorAll('li').forEach(i => i.classList.remove('is-selected'));
+        li.classList.add('is-selected');
+        const name = li.dataset.tierName ?? '';
+        const price = Number(li.dataset.tierPrice ?? 0);
+        const catLabel = (document.querySelector('#scallopTabs button.is-active') as HTMLElement | null)?.textContent?.trim() ?? '';
+        updateSummary(name, price, catLabel);
+      });
+    });
+  });
+</script>
