@@ -828,6 +828,12 @@ a {
   color: var(--accent);
 }
 
+.build-card__cta {
+  width: 100%;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
 /* ============================================================
    Scalloping service
    ============================================================ */

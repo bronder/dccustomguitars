@@ -144,6 +144,12 @@ const builds: Build[] = [
               <span class="build-card__price-label">{build.priceNote}</span>
               <span class="build-card__price-value">{build.price}</span>
             </div>
+            <a
+              class="build-card__cta btn btn--ghost"
+              href={`mailto:info@dccustomguitars.com?subject=${encodeURIComponent(build.name + ' — Build Inquiry')}`}
+            >
+              Inquire about this build
+            </a>
           </div>
         </article>
       ))}
