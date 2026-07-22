@@ -444,18 +444,24 @@ const giftCardPaypalId = 'LNGDR2PPZWL7G';
             Watch the Review
           </a>
         </div>
-      </div>
 
-      <figure class="showcase showcase--scallop">
-        <Picture
-          src={billVisserImg}
-          alt="Bill Visser's scalloped shred guitar by DC Custom Guitars"
-          loading="lazy"
-          widths={[480, 768, 1024, 1280]}
-          sizes="(min-width: 1280px) 1280px, 100vw"
-        />
-        <figcaption>Bill Visser's scalloped shred guitar — a full-pipe hand scallop.</figcaption>
-      </figure>
+        <div class="faq__card">
+          <h3 class="faq__card-title">Bill Visser's shred guitar</h3>
+          <div class="faq__card-media">
+            <Picture
+              src={billVisserImg}
+              alt="Bill Visser's scalloped shred guitar by DC Custom Guitars"
+              loading="lazy"
+              widths={[240, 320, 400, 480]}
+              sizes="(max-width: 880px) 100vw, 280px"
+            />
+          </div>
+          <p class="faq__card-body">
+            A full-pipe hand scallop on a working pro's instrument — the kind
+            of result you can expect when you send your neck to DC Custom.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
