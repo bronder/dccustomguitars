@@ -96,6 +96,12 @@ a {
   position: relative;
 }
 
+/* Remove top padding for the first section after the hero, so the hero's
+   own bottom spacing isn't doubled by the section's top padding. */
+.section--flush-top {
+  padding-top: 0;
+}
+
 .section--elevated {
   background: var(--bg-elevated);
 }
