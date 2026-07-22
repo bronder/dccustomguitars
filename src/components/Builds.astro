@@ -103,6 +103,29 @@ const builds: Build[] = [
     priceNote: 'Quote on request',
   },
 ];
+
+const processSteps = [
+  {
+    num: '01',
+    title: 'Spec It Out',
+    detail: 'Work hand-in-hand with Dean to choose body wood, neck profile, fretboard, inlays, pickups, hardware, and finish — from napkin sketch to final spec.',
+  },
+  {
+    num: '02',
+    title: 'Secure Your Slot',
+    detail: 'A 50% deposit holds your place in the build queue. Dean personally builds every guitar, so slots are limited.',
+  },
+  {
+    num: '03',
+    title: 'Watch It Come To Life',
+    detail: 'Over ~6 months, progress photos are sent throughout the entire build — you see your guitar take shape from raw wood to final setup.',
+  },
+  {
+    num: '04',
+    title: 'Play It Forever',
+    detail: 'Built, finished, wired, assembled, and set up by Dean. Shipped to your door in the USA — ready to play for life.',
+  },
+];
 ---
 
 <section class="section section--elevated" id="builds">
@@ -178,5 +201,21 @@ const builds: Build[] = [
         Evolin exploded view — every component hand-selected and assembled in-house.
       </figcaption>
     </figure>
+
+    <div class="process">
+      <div class="section-head process__head">
+        <span class="section-eyebrow">The Build Process</span>
+        <h2 class="section-title">From sketch<br />to shred.</h2>
+      </div>
+      <ol class="process__steps">
+        {processSteps.map(step => (
+          <li class="process__step">
+            <span class="process__num">{step.num}</span>
+            <h3 class="process__title">{step.title}</h3>
+            <p class="process__detail">{step.detail}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
   </div>
 </section>

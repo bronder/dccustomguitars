@@ -15,6 +15,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 // OG image: must be a stable, non-hashed absolute URL for social scrapers.
 // Served from public/og-hero.jpg (never run through astro:assets).
 const ogImage = new URL('og-hero.jpg', Astro.site).toString();
+// Base-relative prefix for static public/ assets (favicons, manifest).
+const assetBase = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <!doctype html>
@@ -23,7 +25,10 @@ const ogImage = new URL('og-hero.jpg', Astro.site).toString();
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#0a0a0a" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={`${assetBase}/favicon.svg`} />
+    <link rel="icon" type="image/png" sizes="32x32" href={`${assetBase}/favicon-32.png`} />
+    <link rel="apple-touch-icon" sizes="180x180" href={`${assetBase}/apple-touch-icon.png`} />
+    <link rel="manifest" href={`${assetBase}/site.webmanifest`} />
 
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -45,6 +50,52 @@ const ogImage = new URL('og-hero.jpg', Astro.site).toString();
     <!-- Fonts: preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Structured data: helps search engines understand the business -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'LocalBusiness',
+      name: 'DC Custom Guitars USA',
+      description: 'Master Luthier Dean Cascione hand-builds custom electric guitars and offers world-class fretboard scalloping service.',
+      url: canonical,
+      image: ogImage,
+      email: 'info@dccustomguitars.com',
+      founder: {
+        '@type': 'Person',
+        name: 'Dean Cascione',
+      },
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '608 Henshaw Street',
+        addressLocality: 'Rochdale',
+        addressRegion: 'MA',
+        postalCode: '01542',
+        addressCountry: 'US',
+      },
+      areaServed: 'US',
+      knowsAbout: ['Custom guitar building', 'Fretboard scalloping', 'Guitar modifications'],
+      makesOffer: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Product',
+            name: 'DC Custom Evolin',
+            description: 'Signature custom superstrat with sculpted body and premium tonewoods.',
+          },
+          price: '3500',
+          priceCurrency: 'USD',
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Fretboard Scalloping Service',
+            description: 'Hand-scalloping for set neck, bolt-on, and neck-through guitars.',
+          },
+          priceCurrency: 'USD',
+        },
+      ],
+    })} />
   </head>
   <body>
     <a href="#main" class="sr-only">Skip to main content</a>

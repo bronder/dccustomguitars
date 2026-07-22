@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 // When deploying to a custom domain (e.g. https://dccustomguitars.com), set
 // SITE_URL=https://dccustomguitars.com BASE_PATH=/  in the build env.
@@ -9,6 +10,7 @@ export default defineConfig({
   site,
   base,
   compressHTML: true,
+  integrations: [sitemap()],
   image: {
     // Auto-generate responsive srcset + dimensions for all <Image>/<Picture>.
     // 'constrained' = max-width:100%, scales down on smaller viewports.
