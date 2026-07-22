@@ -1,5 +1,6 @@
 ---
 // About — Dean Cascione, master luthier
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <section class="section" id="about">
@@ -12,7 +13,7 @@
     <div class="about">
       <div class="about__media">
         <img
-          src="https://dccustomguitars.com/dean%20cascione%20custom%20guitars.jpg"
+          src={`${base}/images/dean_cascione_custom_guitars.jpg`}
           alt="Master Luthier Dean Cascione in his shop"
           loading="lazy"
           decoding="async"

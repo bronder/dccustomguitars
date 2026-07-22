@@ -35,6 +35,19 @@ const partialTiers = {
     { name: '7th Fret Up', meta: 'Full upper register control', price: 160 },
   ],
 };
+
+// PayPal hosted button per (scope × neck type). Each maps to a distinct product
+// configured in Dean's PayPal account — never collapse these into one ID, or a
+// customer buying a $75 partial bolt-on job will be charged for a $250 full neck-thru.
+const paypalIds = {
+  'full:neck-thru': 'RSQYA3W749BNA',
+  'full:bolt-on': '9FYULR365DGZ4',
+  'partial:neck-thru': 'XGGXRAFY8J5Y8',
+  'partial:bolt-on': '33NJJW2JAWVFN',
+};
+
+// Gift-card button (separate product, $10–$3,000). Used in the FAQ callout.
+const giftCardPaypalId = 'LNGDR2PPZWL7G';
 ---
 
 <section class="section scallop" id="scalloping">
@@ -95,6 +108,25 @@ const partialTiers = {
       </div>
 
       <div class="scallop__tiers">
+        <div class="scallop__scope-tabs" id="scallopScope" role="tablist">
+          <button
+            class="scallop__tier-tab is-active"
+            data-scope="full"
+            role="tab"
+            aria-selected="true"
+          >
+            Full Scallop
+          </button>
+          <button
+            class="scallop__tier-tab"
+            data-scope="partial"
+            role="tab"
+            aria-selected="false"
+          >
+            Partial Scallop
+          </button>
+        </div>
+
         <div class="scallop__tier-tabs" id="scallopTabs" role="tablist">
           {categories.map((cat, i) => (
             <button
@@ -156,6 +188,7 @@ const partialTiers = {
         </div>
 
         <a
+          id="scallopCheckout"
           href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RSQYA3W749BNA"
           target="_blank"
           rel="noopener"
@@ -170,68 +203,283 @@ const partialTiers = {
         </p>
       </div>
     </div>
+
+    <!-- FAQ — ported from the original dccustomguitars.com scalloping section -->
+    <div class="faq">
+      <div class="section-head faq__head">
+        <span class="section-eyebrow">Scalloping FAQ</span>
+        <h2 class="section-title">The details.<br />Straight up.</h2>
+      </div>
+
+      <div class="faq__grid">
+        <details class="faq__item" open>
+          <summary>What is neck scalloping?</summary>
+          <p>
+            Neck scalloping is the removal of fretboard wood between each fret. The two
+            popular methods are <em>barrel / straight-through automated machining</em>
+            and <em>hand scalloping</em>, which follows the neck radius. DC Custom
+            offers hand scalloping because a radius hand-scalloped neck is more natural
+            and comfortable to play, and leaves more wood intact — meaning a stronger,
+            straighter neck. When complete, the fretboard looks identical to the
+            scalloped shredder custom-shop necks found on high-end guitars.
+          </p>
+        </details>
+
+        <details class="faq__item">
+          <summary>Why scallop?</summary>
+          <p>
+            The most noticeable advantage is more control of the notes you fret —
+            better tone and a cleaner sound, no matter how fast you're playing. It
+            also means more control when bending and using vibrato / pull-on-off
+            techniques. Your fingers wrap around the string instead of bottoming out
+            on a flat fretboard, giving you more surface area gripping the string
+            and complete control of each note.
+          </p>
+        </details>
+
+        <details class="faq__item">
+          <summary>Full vs. progressive scallop (Blackmore vs. YJM)</summary>
+          <p>
+            The <strong>Blackmore style</strong> is a <em>progressive</em> scallop —
+            from the side it looks similar to a "Nike Swoosh." It has little to no
+            scallop under the bass strings (EAD) and gets progressively deeper under
+            the treble strings (GBE), contouring into a full scallop after the 12th
+            fret. It leaves more wood intact, helping players who fret chords with
+            heavy hands stay in tune.
+          </p>
+          <p>
+            The <strong>YJM style</strong> is a <em>full pipe</em> scallop — like a
+            BMX or skateboard ramp that extends from fret to fret. All the wood is
+            removed, giving your fingers maximum bite around every string across the
+            entire register.
+          </p>
+        </details>
+
+        <details class="faq__item">
+          <summary>Scallop depth &amp; shape</summary>
+          <p>
+            Side-dot installation depth plays an important role in the actual scallop
+            depth. Necks can typically be scalloped to a depth of 1–2mm without
+            affecting side dots. Blackmore progressive, YJM full, 12th-fret-up,
+            9th-fret-up, and 21–24th-fret scallops are our most popular types — and
+            we're happy to work with you to create your own custom scallop shape.
+          </p>
+        </details>
+
+        <details class="faq__item">
+          <summary>Which fretboard woods do you accept?</summary>
+          <p>
+            All fretboard wood types are accepted, including Indian &amp; Brazilian
+            Rosewood; Quartersawn, Hardrock, Flame, and Birdseye Maple; Cocobolo;
+            Kingwood; Zebrawood; Pau Ferro; Ebony; and more.
+          </p>
+        </details>
+
+        <details class="faq__item">
+          <summary>Will you re-finish the fretboard after scalloping?</summary>
+          <p>
+            Yes. We use nitrocellulose lacquer &amp; sealer on maple fretboards, and
+            tongue oil on fretboards that are normally oiled (rosewood, ebony, etc.).
+            We can also leave the fretboard bare if you prefer.
+          </p>
+        </details>
+
+        <details class="faq__item">
+          <summary>Turnaround time</summary>
+          <p>
+            Typically 2–3 weeks for rosewood-family woods and 3–4 weeks for maple and
+            ebony, from the time the neck is received at the shop. Set-neck and
+            neck-through guitars require additional time to complete.
+          </p>
+        </details>
+
+        <details class="faq__item">
+          <summary>Shipping — why am I charged, and how is it sent?</summary>
+          <p>
+            We ship FedEx, USPS, and UPS — least expensive for you to keep costs down
+            (ground shipping, no insurance by default). A flat fee of
+            <strong>$30 per neck</strong> and <strong>$75 per guitar</strong> is added
+            to ship your package back. If you'd like faster service, partial or exact
+            shipping insurance, or to use your own shipping account, send us a label
+            and we'll work with you on the safest, fastest method.
+          </p>
+        </details>
+
+        <details class="faq__item">
+          <summary>Are there risks?</summary>
+          <p>
+            Yes — there are always risks when modifying a stock guitar neck and
+            shipping to and from our business. Manufacturers can vary their
+            tolerances over time (fretboard thickness, inlay depth, inlay glue /
+            installation materials), which may impact the scalloping process.
+          </p>
+          <p>
+            Shipping services can also be delayed due to circumstances beyond our
+            control, and packages may get lost. DC Custom Guitars is not responsible
+            for purchasing, refunding, building, or replacing a lost or damaged
+            instrument. Extra shipping insurance must be purchased by the client and
+            shipping upgraded to cover the risk before the instrument or parts leave
+            our shop. If an issue arises, we'll work with all carriers to help find
+            your package and make sure it arrives safely.
+          </p>
+        </details>
+
+        <details class="faq__item">
+          <summary>Can I contact someone with more questions?</summary>
+          <p>
+            Yes — email us at
+            <a href="mailto:info@dccustomguitars.com">info@dccustomguitars.com</a>.
+          </p>
+        </details>
+      </div>
+
+      <div class="faq__cards">
+        <div class="faq__card">
+          <h3 class="faq__card-title">Mail your neck in</h3>
+          <p class="faq__card-body">
+            Dean Cascione<br />
+            DC Custom Guitars USA<br />
+            608 Henshaw Street<br />
+            Rochdale, MA 01542<br />
+            USA
+          </p>
+          <p class="faq__card-note">
+            As soon as your neck is received, we'll send a confirmation email and keep
+            you posted with progress photos throughout.
+          </p>
+        </div>
+
+        <div class="faq__card">
+          <h3 class="faq__card-title">Gift cards</h3>
+          <p class="faq__card-body">
+            DC Custom gift certificates from $10 to $3,000 — great for the shredder in
+            your life. Redeemable toward any build, mod, or scalloping service.
+          </p>
+          <a
+            class="btn btn--ghost"
+            href={`https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=${giftCardPaypalId}`}
+            target="_blank"
+            rel="noopener"
+          >
+            Buy a Gift Card
+          </a>
+        </div>
+
+        <div class="faq__card">
+          <h3 class="faq__card-title">Hear it from a pro</h3>
+          <p class="faq__card-body">
+            Maxx Carlisle of <em>Guitar MAX</em> reviews our mail-order scalloping
+            service — see the process and hear the results before you send your neck.
+          </p>
+          <a
+            class="btn btn--ghost"
+            href="https://www.youtube.com/watch?v=oNTH2ONiNBM"
+            target="_blank"
+            rel="noopener"
+          >
+            Watch the Review
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <script>
-  // Scalloping tier selector — interactive
+  // Scalloping tier selector — interactive.
+  // Drives the PayPal checkout to the correct hosted button for the selected
+  // (scope × neck type) combination. Each combo is a distinct product in Dean's
+  // PayPal account — see paypalIds below.
+  const scopeButtons = document.querySelectorAll<HTMLButtonElement>('#scallopScope button');
   const tabButtons = document.querySelectorAll<HTMLButtonElement>('#scallopTabs button');
   const fullList = document.getElementById('scallopFullList') as HTMLUListElement | null;
   const partialList = document.getElementById('scallopPartialList') as HTMLUListElement | null;
   const summaryEl = document.getElementById('scallopSummary');
   const totalEl = document.getElementById('scallopTotal');
+  const checkout = document.getElementById('scallopCheckout') as HTMLAnchorElement | null;
 
-  const categories: Record<string, { label: string; tiers: Array<{ name: string; price: number }> }> = {
-    'neck-thru': {
-      label: 'Neck-Thru',
-      tiers: [
-        { name: 'YJM Style', price: 250 },
-        { name: 'Blackmore Style', price: 275 },
-      ],
-    },
-    'bolt-on': {
-      label: 'Bolt-On',
-      tiers: [
-        { name: 'YJM Style', price: 190 },
-        { name: 'Blackmore Style', price: 220 },
-      ],
-    },
+  const paypalIds: Record<string, string> = {
+    'full:neck-thru': 'RSQYA3W749BNA',
+    'full:bolt-on': '9FYULR365DGZ4',
+    'partial:neck-thru': 'XGGXRAFY8J5Y8',
+    'partial:bolt-on': '33NJJW2JAWVFN',
   };
 
-  const partialData: Record<string, Array<{ name: string; price: number }>> = {
-    'neck-thru': [
-      { name: 'Last 4 Fret (JEM Style)', price: 90 },
-      { name: '15th Fret Up', price: 110 },
-      { name: '12th Fret Up', price: 140 },
-      { name: '9th Fret Up', price: 160 },
-      { name: '7th Fret Up', price: 180 },
-    ],
-    'bolt-on': [
-      { name: 'Last 4 Fret (JEM Style)', price: 75 },
-      { name: '15th Fret Up', price: 90 },
-      { name: '12th Fret Up', price: 110 },
-      { name: '9th Fret Up', price: 140 },
-      { name: '7th Fret Up', price: 160 },
-    ],
-  };
-
-  function updateSummary(name: string, price: number, catLabel: string) {
-    if (summaryEl) summaryEl.textContent = `${name} · ${catLabel}`;
-    if (totalEl) totalEl.textContent = `$${price}`;
+  function currentScope(): string {
+    return (document.querySelector('#scallopScope button.is-active') as HTMLElement | null)?.dataset.scope ?? 'full';
   }
 
-  function selectFirst(list: HTMLUListElement) {
-    const first = list.querySelector<HTMLLIElement>('li');
-    list.querySelectorAll('li').forEach(li => li.classList.remove('is-selected'));
-    if (first) {
-      first.classList.add('is-selected');
-      const name = first.dataset.tierName ?? '';
-      const price = Number(first.dataset.tierPrice ?? 0);
-      const catLabel = (document.querySelector('#scallopTabs button.is-active') as HTMLElement | null)?.textContent?.trim() ?? '';
-      updateSummary(name, price, catLabel);
+  function currentCategory(): string {
+    return (document.querySelector('#scallopTabs button.is-active') as HTMLElement | null)?.dataset.category ?? 'neck-thru';
+  }
+
+  function currentCatLabel(): string {
+    return (document.querySelector('#scallopTabs button.is-active') as HTMLElement | null)?.textContent?.trim() ?? '';
+  }
+
+  function selectedTierIn(list: HTMLUListElement): HTMLLIElement | null {
+    return list.querySelector<HTMLLIElement>('li.is-selected') ?? list.querySelector<HTMLLIElement>('li');
+  }
+
+  // Recompute summary text + the PayPal checkout URL from the current selection.
+  function syncCheckout() {
+    const scope = currentScope();
+    const catLabel = currentCatLabel();
+    const visibleList = (scope === 'full' ? fullList : partialList);
+    if (!visibleList) return;
+
+    const sel = selectedTierIn(visibleList);
+    const name = sel?.dataset.tierName ?? '';
+    const price = Number(sel?.dataset.tierPrice ?? 0);
+
+    if (summaryEl) summaryEl.textContent = `${name} · ${catLabel}`;
+    if (totalEl) totalEl.textContent = `$${price}`;
+
+    if (checkout) {
+      const key = `${scope}:${currentCategory()}`;
+      const hostedButtonId = paypalIds[key] ?? paypalIds['full:neck-thru'];
+      // os0 carries the selected option label to PayPal, matching the original
+      // hosted-button <select> so the cart line item reads correctly.
+      const params = new URLSearchParams({
+        cmd: '_s-xclick',
+        hosted_button_id: hostedButtonId,
+        os0: name,
+      });
+      checkout.href = `https://www.paypal.com/cgi-bin/webscr?${params.toString()}`;
     }
   }
 
+  function selectFirst(list: HTMLUListElement) {
+    list.querySelectorAll('li').forEach(li => li.classList.remove('is-selected'));
+    const first = list.querySelector<HTMLLIElement>('li');
+    first?.classList.add('is-selected');
+  }
+
+  // Full / Partial scope toggle — swaps which tier list is visible and
+  // re-selects the first tier of the active neck-type tab.
+  scopeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      scopeButtons.forEach(b => {
+        b.classList.remove('is-active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-selected', 'true');
+
+      const scope = btn.dataset.scope;
+      const fullView = fullList?.parentElement as HTMLElement | undefined;
+      const partialView = partialList?.parentElement as HTMLElement | undefined;
+      if (fullView) fullView.hidden = scope !== 'full';
+      if (partialView) partialView.hidden = scope !== 'partial';
+
+      const target = scope === 'full' ? fullList : partialList;
+      if (target) selectFirst(target);
+      syncCheckout();
+    });
+  });
+
+  // Neck-type tabs (Neck-Thru vs Bolt-On) — re-select first tier in the
+  // currently visible list and refresh the checkout button.
   tabButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       tabButtons.forEach(b => {
@@ -241,25 +489,24 @@ const partialTiers = {
       btn.classList.add('is-active');
       btn.setAttribute('aria-selected', 'true');
 
-      // For prototype: switching tabs simply re-selects the first item of new category
-      const activeList = fullList?.parentElement?.getAttribute('data-view') === 'full' ? fullList : partialList;
-      // Simpler approach: just reselect first item in current visible list
-      const visibleList = document.querySelector<HTMLDivElement>('[data-view]:not([hidden]) ul') as HTMLUListElement | null;
+      const visibleList = document.querySelector<HTMLUListElement>('[data-view]:not([hidden]) ul');
       if (visibleList) selectFirst(visibleList);
+      syncCheckout();
     });
   });
 
+  // Clicking a tier selects it and refreshes the checkout button.
   [fullList, partialList].forEach(list => {
     if (!list) return;
     list.querySelectorAll<HTMLLIElement>('li').forEach(li => {
       li.addEventListener('click', () => {
         list.querySelectorAll('li').forEach(i => i.classList.remove('is-selected'));
         li.classList.add('is-selected');
-        const name = li.dataset.tierName ?? '';
-        const price = Number(li.dataset.tierPrice ?? 0);
-        const catLabel = (document.querySelector('#scallopTabs button.is-active') as HTMLElement | null)?.textContent?.trim() ?? '';
-        updateSummary(name, price, catLabel);
+        syncCheckout();
       });
     });
   });
+
+  // Set the correct checkout URL for the initial selection on load.
+  syncCheckout();
 </script>

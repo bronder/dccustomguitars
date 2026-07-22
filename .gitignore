@@ -8,3 +8,4 @@ dist
 
 # Local dev artifacts
 screenshot-*.png
+.zcode/

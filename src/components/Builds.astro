@@ -1,10 +1,11 @@
 ---
 // Custom Builds showcase
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const builds = [
   {
     name: 'DC Custom Evolin',
     badge: 'Bestseller',
-    image: 'https://dccustomguitars.com/evolin_dc_custom_guitars_usa.jpg',
+    image: `${base}/images/evolin_dc_custom_guitars_usa.jpg`,
     alt: 'DC Custom Evolin signature model electric guitar',
     description:
       "Dean's signature instrument. A modern superstrat with a sculpted body, premium tonewoods, and uncompromising build quality. Built to your spec from the ground up.",
@@ -20,7 +21,7 @@ const builds = [
   {
     name: 'Super Shred (SS)',
     badge: 'Pro Choice',
-    image: 'https://dccustomguitars.com/super%20strat%20jack%20butler%20style.jpg',
+    image: `${base}/images/super_strat_jack_butler_style.jpg`,
     alt: 'DC Custom Super Shred (SS) signature model',
     description:
       'Built for the player who lives in the upper register. Available in rear-route (RR) or top-route (TR) configurations with the hottest pickups and the most aggressive specs.',
@@ -36,7 +37,7 @@ const builds = [
   {
     name: 'Reverse Hendrix',
     badge: 'Custom Build',
-    image: 'https://dccustomguitars.com/dc%20custom%20reverse%20hendrix.jpg',
+    image: `${base}/images/dc_custom_reverse_hendrix.jpg`,
     alt: 'DC Custom Reverse Hendrix — left-handed or right-handed reverse headstock',
     description:
       "Inspired by the legend, reimagined for the modern player. Reverse headstock, vintage-style contours, and that unmistakable silhouette. Every detail built to your taste.",
@@ -52,7 +53,7 @@ const builds = [
   {
     name: 'Modded Flying V',
     badge: 'Recent Build',
-    image: 'https://dccustomguitars.com/sequon%20yoon%20modded%20gibson%20v%20single%20pickups.jpg',
+    image: `${base}/images/sequon_yoon_modded_gibson_v_single_pickups.jpg`,
     alt: 'DC Custom modded Gibson Flying V with SSS pickup configuration',
     description:
       "Bought a guitar that doesn't have the right tone, function, or feel? We'll rework contours, install new pickups, custom wire, add a tremolo, or block the bridge.",
@@ -68,7 +69,7 @@ const builds = [
   {
     name: 'Modded ESP / LTD',
     badge: 'Client Build',
-    image: 'https://dccustomguitars.com/joe%20stump%20modded%20esp%20ltd%20scallops.jpg',
+    image: `${base}/images/joe_stump_modded_esp_ltd_scallops.jpg`,
     alt: "DC Custom modded ESP LTD with Joe Stump scallops",
     description:
       "One of Joe Stump's personal builds. The same scallop job, pickup swap, and setup that pro players trust for their working instruments.",

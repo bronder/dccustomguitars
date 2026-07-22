@@ -10,10 +10,12 @@ interface Props {
 const {
   title = 'DC Custom Guitars USA — Hand-Built Custom Guitars & Scalloping Service',
   description = 'Master Luthier Dean Cascione hand-builds custom electric guitars and offers world-class fretboard scalloping service from his shop in Rochdale, MA. Trusted by Joe Stump, Tony Rombola & more.',
-  image = 'https://dccustomguitars.com/evolin_bandmaster_jacket%20copy_1600.jpg',
+  image = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/evolin_bandmaster_jacket_copy_1600.jpg`,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+// OG images need an absolute URL to work on social platforms.
+const ogImage = new URL(image, Astro.site).toString();
 ---
 
 <!doctype html>
@@ -33,13 +35,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
+    <meta property="og:image" content={ogImage} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={image} />
+    <meta name="twitter:image" content={ogImage} />
 
     <!-- Fonts: preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

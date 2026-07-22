@@ -28,7 +28,7 @@ Once the GitHub Action runs, the site is served at:
 
 ## Local development
 
-Requires Node 20+.
+Requires Node 22+.
 
 ```bash
 npm install

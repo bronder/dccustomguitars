@@ -887,6 +887,146 @@ a {
   margin-top: 1rem;
 }
 
+/* Full / Partial scope switch */
+.scallop__scope-tabs {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.375rem;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+}
+
+/* ============================================================
+   Scalloping FAQ
+   ============================================================ */
+.faq {
+  margin-top: clamp(4rem, 8vw, 6rem);
+}
+
+.faq__head {
+  text-align: left;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.faq__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+  gap: 1rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.faq__item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.faq__item[open] {
+  border-color: var(--border-strong);
+}
+
+.faq__item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  list-style: none;
+  color: var(--text);
+}
+
+.faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq__item summary::after {
+  content: '+';
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--accent);
+  transition: transform 0.2s ease;
+}
+
+.faq__item[open] summary::after {
+  content: '−';
+}
+
+.faq__item summary:hover {
+  background: var(--bg-card-hover);
+}
+
+.faq__item p {
+  padding: 0 1.5rem 1.5rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.faq__item p + p {
+  margin-top: 0.75rem;
+}
+
+.faq__item p strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.faq__item p a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.faq__item p a:hover {
+  color: var(--accent-hover);
+}
+
+/* FAQ feature cards (address, gift cards, review) */
+.faq__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 1.5rem;
+}
+
+.faq__card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.75rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.faq__card-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.faq__card-body {
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-size: 0.95rem;
+  flex: 1;
+}
+
+.faq__card-note {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
 /* ============================================================
    Testimonial
    ============================================================ */
