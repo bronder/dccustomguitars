@@ -563,6 +563,127 @@ a {
   font-weight: 600;
 }
 
+/* Partners / NAMM block */
+.about__partners {
+  margin-top: clamp(3rem, 6vw, 5rem);
+}
+
+.about__partners-lead {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  line-height: 1.6;
+  color: var(--text);
+  max-width: 60ch;
+  margin-bottom: 2rem;
+}
+
+.about__partners-lead strong {
+  color: var(--accent);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.about__figure {
+  margin: 0;
+}
+
+.about__figure img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+
+.about__figure figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ============================================================
+   Showcase figures (wide, full-bleed product/process photos)
+   ============================================================ */
+.showcase {
+  margin: clamp(2.5rem, 5vw, 4rem) 0 0;
+}
+
+.showcase img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+
+.showcase figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.showcase--scallop {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.showcase--artists {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+/* Scalloping intro showcase (sits inside the intro column) */
+.scallop__showcase {
+  margin: 2rem 0 0;
+}
+
+.scallop__showcase img {
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.scallop__showcase figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* In-FAQ figures (diagrams, etc.) */
+.faq__figure {
+  margin: 1.25rem 0 0;
+}
+
+.faq__figure img {
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.faq__figure figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Clickable media inside an FAQ card (e.g. review thumbnail) */
+.faq__card-media {
+  display: block;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: border-color 0.2s ease;
+}
+
+.faq__card-media:hover {
+  border-color: var(--accent);
+}
+
+.faq__card-media img {
+  width: 100%;
+}
+
 /* ============================================================
    Builds
    ============================================================ */

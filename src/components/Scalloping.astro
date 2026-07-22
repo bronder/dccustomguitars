@@ -48,6 +48,7 @@ const paypalIds = {
 
 // Gift-card button (separate product, $10–$3,000). Used in the FAQ callout.
 const giftCardPaypalId = 'LNGDR2PPZWL7G';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <section class="section scallop" id="scalloping">
@@ -71,10 +72,25 @@ const giftCardPaypalId = 'LNGDR2PPZWL7G';
           that stays in tune.
         </p>
         <p>
+          Experienced in set necks, bolt-on necks, and neck-through guitars —
+          6, 7, 8+ string, fanned fret, and multi-scale necks, and just about
+          any dot inlay configuration (dots, shark fins, abalone, blocks).
+          Scalloping services are also offered to many OEM companies.
+        </p>
+        <p>
           Every scallop is finished with the right treatment for the wood:
           nitrocellulose lacquer and sealer for maple, tongue oil for rosewood
           and ebony families, or left bare if you prefer.
         </p>
+        <figure class="scallop__showcase">
+          <img
+            src={`${base}/images/scalloped_fretboard_dc_guitars.jpg`}
+            alt="Close-up of a hand-scalloped fretboard by DC Custom Guitars"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>A finished hand-scalloped fretboard, following the neck radius.</figcaption>
+        </figure>
         <ul class="scallop__features">
           <li class="scallop__feature">
             <span class="scallop__feature-icon">✓</span>
@@ -253,6 +269,15 @@ const giftCardPaypalId = 'LNGDR2PPZWL7G';
             removed, giving your fingers maximum bite around every string across the
             entire register.
           </p>
+          <figure class="faq__figure">
+            <img
+              src={`${base}/images/scallops_differences_fretboard.jpg`}
+              alt="Diagram showing the difference between Blackmore progressive and YJM full-pipe scallops"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>Blackmore progressive vs. YJM full-pipe — side profile.</figcaption>
+          </figure>
         </details>
 
         <details class="faq__item">
@@ -367,6 +392,20 @@ const giftCardPaypalId = 'LNGDR2PPZWL7G';
 
         <div class="faq__card">
           <h3 class="faq__card-title">Hear it from a pro</h3>
+          <a
+            class="faq__card-media"
+            href="https://www.youtube.com/watch?v=oNTH2ONiNBM"
+            target="_blank"
+            rel="noopener"
+            aria-label="Watch Maxx Carlisle's Guitar MAX review on YouTube"
+          >
+            <img
+              src={`${base}/images/guitar_maxx_carlisle_reviews.jpg`}
+              alt="Maxx Carlisle of Guitar MAX reviews the DC Custom Guitars scalloping service"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
           <p class="faq__card-body">
             Maxx Carlisle of <em>Guitar MAX</em> reviews our mail-order scalloping
             service — see the process and hear the results before you send your neck.
@@ -381,6 +420,16 @@ const giftCardPaypalId = 'LNGDR2PPZWL7G';
           </a>
         </div>
       </div>
+
+      <figure class="showcase showcase--scallop">
+        <img
+          src={`${base}/images/bill_visser_shred_guitar.jpg`}
+          alt="Bill Visser's scalloped shred guitar by DC Custom Guitars"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>Bill Visser's scalloped shred guitar — a full-pipe hand scallop.</figcaption>
+      </figure>
     </div>
   </div>
 </section>

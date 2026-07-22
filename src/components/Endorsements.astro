@@ -1,4 +1,5 @@
 ---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const artists = [
   { name: 'Joe Stump', url: 'http://www.joestump.com/' },
   { name: 'Tony Rombola', url: 'https://www.godsmack.com/' },
@@ -29,6 +30,15 @@ const artists = [
       <span class="section-eyebrow">Endorsed Artists</span>
       <h2 class="section-title">Played by the best.</h2>
     </div>
+
+    <figure class="showcase showcase--artists">
+      <img
+        src={`${base}/images/dc_artists_banner.jpg`}
+        alt="DC Custom Guitars endorsed artists banner"
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
 
     <blockquote class="testimonial">
       <p class="testimonial__quote">
