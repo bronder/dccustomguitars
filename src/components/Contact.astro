@@ -1,8 +1,11 @@
 ---
-// Final CTA — start a build
+// Final CTA + inquiry form (Web3Forms)
+// Get your free access key at https://web3forms.com (sends to info@dccustomguitars.com)
+// then replace the value below.
+const WEB3FORMS_KEY = 'YOUR_ACCESS_KEY_HERE';
 ---
 
-<section class="section">
+<section class="section" id="contact">
   <div class="container">
     <div class="cta">
       <div class="cta__inner">
@@ -17,10 +20,47 @@
           Dean personally builds every guitar. Only a limited number of build
           slots open each year — early inquiry holds your place in the queue.
         </p>
-        <a href="mailto:info@dccustomguitars.com?subject=Custom%20Build%20Inquiry" class="btn btn--primary btn--lg">
-          Get in Touch
-        </a>
-        <div>
+
+        <form class="contact-form" id="contactForm">
+          <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
+          {/* Honeypot spam protection */}
+          <input type="checkbox" name="botcheck" class="contact-form__honeypot" tabindex="-1" autocomplete="off" />
+
+          <div class="contact-form__row">
+            <div class="contact-form__field">
+              <label for="cf-name">Name</label>
+              <input type="text" id="cf-name" name="name" placeholder="Your name" required autocomplete="name" />
+            </div>
+            <div class="contact-form__field">
+              <label for="cf-email">Email</label>
+              <input type="email" id="cf-email" name="email" placeholder="you@example.com" required autocomplete="email" />
+            </div>
+          </div>
+
+          <div class="contact-form__field">
+            <label for="cf-interest">I'm interested in</label>
+            <select id="cf-interest" name="interest">
+              <option value="Custom Build">A custom guitar build</option>
+              <option value="Scalloping Service">Fretboard scalloping service</option>
+              <option value="Guitar Mod">Modding an existing guitar</option>
+              <option value="General">Something else / general question</option>
+            </select>
+          </div>
+
+          <div class="contact-form__field">
+            <label for="cf-message">Tell us about your project</label>
+            <textarea id="cf-message" name="message" rows="4" placeholder="What are you looking for? Body wood, pickups, budget, timeline, scalloping details…"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--lg" id="contactSubmit">
+            Send Inquiry
+          </button>
+
+          <p class="contact-form__status" id="contactStatus" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="cta__email-wrap">
+          <span>Prefer email? </span>
           <a href="mailto:info@dccustomguitars.com" class="cta__email">
             info@dccustomguitars.com
           </a>
@@ -29,3 +69,45 @@
     </div>
   </div>
 </section>
+
+<script>
+  const form = document.getElementById('contactForm') as HTMLFormElement | null;
+  const status = document.getElementById('contactStatus');
+  const submitBtn = document.getElementById('contactSubmit') as HTMLButtonElement | null;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!submitBtn) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    if (status) { status.textContent = ''; status.className = 'contact-form__status'; }
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        if (status) {
+          status.textContent = 'Thanks! Your inquiry has been sent — Dean will get back to you soon.';
+          status.classList.add('is-success');
+        }
+        form.reset();
+      } else {
+        throw new Error(data.message || 'Submission failed');
+      }
+    } catch {
+      if (status) {
+        status.textContent = 'Something went wrong. Please email info@dccustomguitars.com directly.';
+        status.classList.add('is-error');
+      }
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Inquiry';
+    }
+  });
+</script>
