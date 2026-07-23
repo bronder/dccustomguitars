@@ -663,6 +663,10 @@ a {
   margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
+.showcase--lineup {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
 /* Scalloping intro showcase (sits inside the intro column) */
 .scallop__showcase {
   margin: 2rem 0 0;
