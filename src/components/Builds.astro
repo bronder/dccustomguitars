@@ -7,6 +7,7 @@ import superShredImg from '~/assets/images/super_strat_jack_butler_style.jpg';
 import reverseHendrixImg from '~/assets/images/dc_custom_reverse_hendrix.jpg';
 import moddedVImg from '~/assets/images/sequon_yoon_modded_gibson_v_single_pickups.jpg';
 import moddedEspImg from '~/assets/images/joe_stump_modded_esp_ltd_scallops.jpg';
+import robMooreImg from '~/assets/images/rob_moore_02.JPG';
 import lineupImg from '~/assets/images/dc_custom_models_1600.jpg';
 import explodedImg from '~/assets/images/evolin_exploded_view_01.jpg';
 import nammImg from '~/assets/images/dean_cascione_seymour_duncan_floyd_rose.jpg';
@@ -29,12 +30,13 @@ const builds: Build[] = [
     image: evolinImg,
     alt: 'DC Custom Evolin signature model electric guitar',
     description:
-      "Dean's signature instrument. A modern superstrat with a sculpted body, premium tonewoods, and uncompromising build quality. Built to your spec from the ground up.",
+      "Dean's signature instrument. A traditional design with a sculptured body, premium tonewoods, and uncompromising build quality. Built to your spec from the ground up.",
     specs: [
-      ['Body', 'Alder / Mahogany'],
+      ['Body', 'Alder / Basswood / Swamp Ash / Mahogany'],
       ['Neck', 'Bolt-on or Set'],
       ['Scale', '25.5"'],
-      ['Frets', '22–24'],
+      ['Frets', '21 / 22'],
+      ['Hand', 'Right- or Left-handed'],
     ],
     price: '$3,500',
     priceNote: 'Includes USA shipping',
@@ -48,8 +50,10 @@ const builds: Build[] = [
       'Built for the player who lives in the upper register. Rear-route (RR) configuration with the hottest pickups and the most aggressive specs.',
     specs: [
       ['Config', 'Rear Route (RR)'],
-      ['Bridge', 'Floyd Rose / Kahler'],
+      ['Body', 'Alder / Basswood / Swamp Ash / Mahogany'],
       ['Neck', 'Bolt-on Maple'],
+      ['Frets', '21 / 22 / 24'],
+      ['Bridge', 'Floyd Rose / Kahler'],
       ['Pickups', 'Your choice'],
     ],
     price: '$3,000',
@@ -102,6 +106,23 @@ const builds: Build[] = [
     ],
     price: 'Custom',
     priceNote: 'Quote on request',
+  },
+  {
+    name: "Rob Moore's Left-Handed Evolin",
+    badge: 'Client Build',
+    image: robMooreImg,
+    alt: "Rob Moore's left-handed DC Custom Evolin with scalloped fretboard",
+    description:
+      "A left-handed DC Custom Evolin built for endorsed artist Rob Moore. Built to his spec with a scalloped fretboard and the same pro-grade hardware the working shredder demands.",
+    specs: [
+      ['Body', 'Evolin (Left-handed)'],
+      ['Frets', '22 · Scallop'],
+      ['Fretwire', 'Dunlop 6000 Super Jumbo'],
+      ['Pickups', 'Seymour Duncan'],
+      ['Bridge', 'Floyd Rose (non fine-tuner)'],
+    ],
+    price: 'Client Build',
+    priceNote: 'Rob Moore',
   },
 ];
 
