@@ -9,6 +9,7 @@ import moddedVImg from '~/assets/images/sequon_yoon_modded_gibson_v_single_picku
 import moddedEspImg from '~/assets/images/joe_stump_modded_esp_ltd_scallops.jpg';
 import lineupImg from '~/assets/images/dc_custom_models_1600.jpg';
 import explodedImg from '~/assets/images/evolin_exploded_view_01.jpg';
+import nammImg from '~/assets/images/dean_cascione_seymour_duncan_floyd_rose.jpg';
 
 interface Build {
   name: string;
@@ -210,6 +211,27 @@ const processSteps = [
       />
       <figcaption>The DC Custom lineup — Evolin and Super Shred side by side.</figcaption>
     </figure>
+
+    <div class="partners">
+      <p class="partners__lead">
+        We've teamed up with the <strong>BEST manufacturers</strong> of guitar
+        tremolos, pickups, frets, strings, string nuts, strap locks, and tuners
+        to bring you the highest quality and best sounding instruments on the
+        planet.
+      </p>
+      <figure class="partners__figure">
+        <Picture
+          src={nammImg}
+          alt="Dean Cascione at NAMM with Floyd Rose and Seymour Duncan"
+          loading="lazy"
+          widths={[480, 768, 1024, 1280, 1600]}
+          sizes="(min-width: 1280px) 1280px, 100vw"
+        />
+        <figcaption>
+          Dean "DC" Cascione at NAMM with Floyd Rose &amp; Seymour Duncan!
+        </figcaption>
+      </figure>
+    </div>
 
     <figure class="showcase">
       <Picture

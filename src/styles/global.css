@@ -579,12 +579,12 @@ a {
   font-weight: 600;
 }
 
-/* Partners / NAMM block */
-.about__partners {
+/* Partners / NAMM block (in Builds section) */
+.partners {
   margin-top: clamp(3rem, 6vw, 5rem);
 }
 
-.about__partners-lead {
+.partners__lead {
   font-family: var(--font-serif);
   font-style: italic;
   font-size: clamp(1.15rem, 2vw, 1.5rem);
@@ -594,23 +594,23 @@ a {
   margin-bottom: 2rem;
 }
 
-.about__partners-lead strong {
+.partners__lead strong {
   color: var(--accent);
   font-style: normal;
   font-weight: 600;
 }
 
-.about__figure {
+.partners__figure {
   margin: 0;
 }
 
-.about__figure img {
+.partners__figure img {
   width: 100%;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
 }
 
-.about__figure figcaption {
+.partners__figure figcaption {
   margin-top: 0.75rem;
   font-size: 0.85rem;
   letter-spacing: 0.05em;
