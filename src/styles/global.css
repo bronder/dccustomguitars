@@ -987,6 +987,46 @@ a {
   margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
+/* Sketch image + heading, side by side on desktop, stacked on mobile */
+.process__hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  align-items: center;
+}
+
+@media (min-width: 880px) {
+  .process__hero {
+    grid-template-columns: minmax(0, 380px) 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.process__sketch {
+  margin: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+}
+
+.process__sketch img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.process__sketch figcaption {
+  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+  font-style: italic;
+}
+
 .process__steps {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));

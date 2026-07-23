@@ -11,6 +11,7 @@ import robMooreImg from '~/assets/images/rob_moore_02.JPG';
 import lineupImg from '~/assets/images/dc_custom_models_1600.jpg';
 import explodedImg from '~/assets/images/evolin_exploded_view_01.jpg';
 import nammImg from '~/assets/images/dean_cascione_seymour_duncan_floyd_rose.jpg';
+import sketchImg from '~/assets/images/gallery/gallery_13.jpg';
 
 interface Build {
   name: string;
@@ -304,9 +305,21 @@ const processSteps = [
     </div>
 
     <div class="process">
-      <div class="section-head process__head">
-        <span class="section-eyebrow">The Build Process</span>
-        <h2 class="section-title">From sketch<br />to shred.</h2>
+      <div class="process__hero">
+        <figure class="process__sketch">
+          <Picture
+            src={sketchImg}
+            alt="Concept sketch for a DC Custom Guitars build"
+            loading="lazy"
+            widths={[300, 400, 500, 640]}
+            sizes="(max-width: 880px) 100vw, 380px"
+          />
+          <figcaption>Every build starts as a concept sketch.</figcaption>
+        </figure>
+        <div class="section-head process__head">
+          <span class="section-eyebrow">The Build Process</span>
+          <h2 class="section-title">From sketch<br />to shred.</h2>
+        </div>
       </div>
       <ol class="process__steps">
         {processSteps.map(step => (
