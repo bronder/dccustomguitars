@@ -1224,6 +1224,39 @@ a {
   margin-top: 1rem;
 }
 
+/* Gift card row inside the order box */
+.scallop__giftcard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.scallop__giftcard-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.scallop__giftcard-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.scallop__giftcard-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
 /* Trust badges above the checkout button */
 .scallop__trust {
   display: flex;
