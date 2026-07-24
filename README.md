@@ -21,7 +21,7 @@ Once the GitHub Action runs, the site is served at:
 
 ## Stack
 
-- **Astro 5** — static site generator, ships ~zero JS by default
+- **Astro 7** — static site generator, ships ~zero JS by default
 - **TypeScript strict** — type-safe components
 - **No CSS framework** — hand-rolled design system in `src/styles/global.css`
 - **Google Fonts** — Bebas Neue (display) + Inter (body) + Cormorant Garamond (accent)
@@ -55,18 +55,24 @@ to a custom domain root (e.g. `dccustomguitars.com`), set these in repo
 
 ```
 src/
-├── components/    Nav, Hero, About, Builds, Scalloping, Endorsements, Contact, Footer
+├── assets/
+│   └── images/    product photos, co-located with the components that use them
+│       └── gallery/   "Recent Builds" lightbox photos
+├── components/    Nav, Hero, About, Builds, Gallery, Scalloping, Endorsements, Contact, Footer
 ├── layouts/       BaseLayout
 ├── pages/         index.astro
 └── styles/        global.css (design system)
 public/
-└── images/        (Dean can drop product photos here)
+└── images/        drop new product photos here if not co-located in src/assets
 .github/
 └── workflows/     deploy.yml, ci.yml
 ```
 
 ## Image hosting
 
-The prototype references product images directly from `dccustomguitars.com`.
-For production, download and re-host them locally in `public/images/` for
-performance and to eliminate cross-origin dependency.
+Product images live locally in `src/assets/images/` (with build gallery
+photos under `src/assets/images/gallery/`). Astro's image service
+auto-generates responsive `srcset` values and dimensions at build time, so
+there is no cross-origin dependency on `dccustomguitars.com`. Drop new photos
+into `src/assets/images/` (or `public/images/` for static, unprocessed
+assets) and import them in the relevant component.
