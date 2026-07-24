@@ -1,6 +1,6 @@
 ---
 // Recent Builds gallery — masonry grid + lightbox
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import type { ImageMetadata } from 'astro:assets';
 import g01 from '~/assets/images/gallery/gallery_01.jpg';
 import g02 from '~/assets/images/gallery/gallery_02.jpg';
@@ -19,7 +19,7 @@ import g14 from '~/assets/images/gallery/gallery_14.jpg';
 import g15 from '~/assets/images/gallery/gallery_15.jpg';
 import g16 from '~/assets/images/gallery/gallery_16.jpg';
 
-const photos: Array<{ src: ImageMetadata; alt: string }> = [
+const galleryPhotos: Array<{ src: ImageMetadata; alt: string }> = [
   { src: g01, alt: 'DC Custom Guitars hand-built electric guitar in studio lighting' },
   { src: g02, alt: 'DC Custom Guitars finished build with detailed fretwork' },
   { src: g03, alt: 'DC Custom Guitars custom build with premium tonewoods' },
@@ -37,6 +37,22 @@ const photos: Array<{ src: ImageMetadata; alt: string }> = [
   { src: g15, alt: 'DC Custom Guitars finished build with custom color finish' },
   { src: g16, alt: 'DC Custom Guitars endorsed artist build' },
 ];
+
+// Generate optimized full-size images for the lightbox instead of serving the
+// multi-megabyte originals. Width 1600 balances detail and file size for a
+// full-viewport overlay; webp gives a strong size/quality ratio with broad
+// browser support.
+const photos = await Promise.all(
+  galleryPhotos.map(async (photo) => {
+    const full = await getImage({
+      src: photo.src,
+      width: 1600,
+      format: 'webp',
+      quality: 78,
+    });
+    return { ...photo, fullSrc: full.src };
+  }),
+);
 ---
 
 <section class="section" id="gallery">
@@ -54,7 +70,7 @@ const photos: Array<{ src: ImageMetadata; alt: string }> = [
       {photos.map((photo, i) => (
         <button
           class="gallery__item"
-          data-full={photo.src.src}
+          data-full={photo.fullSrc}
           data-index={i}
           aria-label={`View photo ${i + 1}: ${photo.alt}`}
         >
